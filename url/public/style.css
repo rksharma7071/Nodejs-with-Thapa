@@ -1,0 +1,403 @@
+ /* ========== Base / Reset ========== */
+ *,
+ *::before,
+ *::after {
+     box-sizing: border-box;
+ }
+
+ :root {
+     --bg: #0b1220;
+     --card: rgba(255, 255, 255, 0.08);
+     --card-border: rgba(255, 255, 255, 0.15);
+     --text: #e6e9ef;
+     --muted: #aab3c5;
+     --accent: #7c5cff;
+     --accent-2: #25d0a6;
+     --danger: #ff6b6b;
+     --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+     --radius: 18px;
+ }
+
+ @media (prefers-color-scheme: light) {
+     :root {
+         --bg: #f6f7fb;
+         --card: #ffffff;
+         --card-border: #e4e7ee;
+         --text: #1d2230;
+         --muted: #5b6273;
+         --shadow: 0 10px 24px rgba(16, 24, 40, 0.06);
+     }
+ }
+
+ html,
+ body {
+     height: 100%;
+ }
+
+ body {
+     margin: 0;
+     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+     color: var(--text);
+     background:
+         radial-gradient(1200px 600px at 10% -10%, rgba(124, 92, 255, .25), transparent 60%),
+         radial-gradient(1000px 500px at 110% 10%, rgba(37, 208, 166, .25), transparent 60%),
+         var(--bg);
+     display: grid;
+     place-items: center;
+     padding: 32px 16px;
+ }
+
+ /* ========== Card Container ========== */
+ .container {
+     width: min(760px, 92vw);
+     background: var(--card);
+     border: 1px solid var(--card-border);
+     border-radius: var(--radius);
+     box-shadow: var(--shadow);
+     backdrop-filter: blur(8px);
+     padding: clamp(20px, 5vw, 36px);
+     position: relative;
+     overflow: hidden;
+ }
+
+ .container::after {
+     content: "";
+     position: absolute;
+     inset: -1px;
+     background: linear-gradient(120deg, transparent 0%, rgba(124, 92, 255, .08) 35%, rgba(37, 208, 166, .08) 65%, transparent 100%);
+     pointer-events: none;
+     mask: linear-gradient(#000 0 0);
+     border-radius: inherit;
+ }
+
+ /* ========== Headings ========== */
+ h1 {
+     margin: 0 0 12px;
+     font-size: clamp(26px, 3.6vw, 34px);
+     letter-spacing: -0.02em;
+ }
+
+ h2 {
+     margin: 28px 0 12px;
+     font-size: clamp(18px, 2.6vw, 20px);
+     color: var(--muted);
+     font-weight: 600;
+ }
+
+ /* ========== Form ========== */
+ #shorten-form {
+     display: grid;
+     gap: 16px;
+     margin-top: 16px;
+ }
+
+ #shorten-form>div {
+     display: grid;
+     gap: 8px;
+ }
+
+ label {
+     font-size: 14px;
+     color: var(--muted);
+ }
+
+ input[type="url"],
+ input[type="text"] {
+     width: 100%;
+     padding: 14px 14px;
+     border-radius: 12px;
+     border: 1px solid var(--card-border);
+     background: rgba(255, 255, 255, 0.06);
+     color: var(--text);
+     outline: none;
+     transition: border-color .2s, box-shadow .2s, background .2s;
+ }
+
+ input::placeholder {
+     color: color-mix(in oklab, var(--muted) 80%, transparent);
+ }
+
+ input:focus-visible {
+     border-color: color-mix(in oklab, var(--accent) 70%, white 30%);
+     box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent);
+     background: rgba(255, 255, 255, 0.10);
+ }
+
+ button,
+ input[type="submit"] {
+     appearance: none;
+     border: 0;
+     padding: 12px 16px;
+     border-radius: 12px;
+     background: linear-gradient(90deg, var(--accent), var(--accent-2));
+     color: white;
+     font-weight: 600;
+     cursor: pointer;
+     transition: transform .06s ease, filter .2s ease;
+     /* line-height: 1;
+     letter-spacing: .2px;
+     box-shadow: 0 6px 20px rgba(124, 92, 255, .25); */
+ }
+
+ button:hover,
+ input[type="submit"]:hover {
+     filter: brightness(1.08);
+ }
+
+ button:hover,
+ input[type="submit"]:hover {
+     filter: brightness(1.08);
+ }
+
+ button:active,
+ input[type="submit"]:active {
+     transform: translateY(1px);
+ }
+
+ button:active,
+ input[type="submit"]:active {
+     transform: translateY(1px);
+ }
+
+ button:focus-visible {
+     outline: none;
+     box-shadow:
+         0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent),
+         0 6px 20px rgba(124, 92, 255, .25);
+ }
+
+ /* Native validation feedback (CSS-only) */
+ input:user-invalid {
+     border-color: color-mix(in oklab, var(--danger) 70%, var(--card-border));
+     background: rgba(255, 107, 107, .06);
+ }
+
+ input:user-invalid:focus-visible {
+     box-shadow: 0 0 0 6px color-mix(in oklab, var(--danger) 16%, transparent);
+ }
+
+ input:user-valid:not(:placeholder-shown) {
+     border-color: color-mix(in oklab, var(--accent-2) 70%, var(--card-border));
+ }
+
+ /* ========== Shortened URLs List ========== */
+ #shortend-urls {
+     list-style: none;
+     padding: 0;
+     margin: 8px 0 0;
+     display: grid;
+     gap: 10px;
+ }
+
+ #shortend-urls li {
+     display: grid;
+     grid-template-columns: 1fr auto;
+     align-items: center;
+     gap: 10px;
+     padding: 12px 14px;
+     border: 1px solid var(--card-border);
+     background: rgba(255, 255, 255, 0.06);
+     border-radius: 12px;
+     transition: border-color .2s, background .2s, transform .15s;
+     cursor: pointer;
+     user-select: text;
+     animation: fadeUp .35s ease both;
+ }
+
+ #shortend-urls li:hover {
+     border-color: color-mix(in oklab, var(--accent) 40%, var(--card-border));
+     background: rgba(255, 255, 255, 0.10);
+     transform: translateY(-1px);
+ }
+
+ .row {
+     display: grid;
+     gap: 2px;
+ }
+
+ .meta {
+     font-size: 12px;
+     color: var(--muted);
+ }
+
+ .actions {
+     display: inline-flex;
+     gap: 8px;
+ }
+
+ .link {
+     color: var(--accent-2);
+     text-decoration: none;
+     font-weight: 600;
+     word-break: break-all;
+ }
+
+ .badge {
+     font-size: 11px;
+     padding: 6px 10px;
+     border-radius: 999px;
+     background: rgba(124, 92, 255, .18);
+     color: color-mix(in oklab, var(--accent) 85%, white);
+     border: 1px solid color-mix(in oklab, var(--accent) 55%, var(--card-border));
+ }
+
+ .chip {
+     font-size: 11px;
+     padding: 4px 8px;
+     border-radius: 999px;
+     border: 1px solid var(--card-border);
+     background: rgba(255, 255, 255, .06);
+ }
+
+ .chip.success {
+     border-color: color-mix(in oklab, var(--accent-2) 55%, var(--card-border));
+     background: color-mix(in oklab, var(--accent-2) 18%, transparent);
+ }
+
+ /* Loading shimmer (add .is-loading to an element) */
+ .is-loading {
+     position: relative;
+     color: transparent !important;
+ }
+
+ .is-loading::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     border-radius: inherit;
+     background: linear-gradient(100deg,
+             rgba(255, 255, 255, 0.06) 20%,
+             rgba(255, 255, 255, 0.18) 40%,
+             rgba(255, 255, 255, 0.06) 60%);
+     animation: shimmer 1.2s linear infinite;
+ }
+
+ @keyframes shimmer {
+     from {
+         transform: translateX(-20%);
+     }
+
+     to {
+         transform: translateX(20%);
+     }
+ }
+
+ /* Animations */
+ @keyframes fadeUp {
+     from {
+         opacity: 0;
+         transform: translateY(6px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+
+ #shortend-urls {
+     list-style: none;
+     padding: 0;
+     margin: 12px 0 0;
+     display: grid;
+     gap: 12px;
+ }
+
+ #shortend-urls li {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     padding: 14px 16px;
+     border: 1px solid var(--card-border);
+     background: rgba(255, 255, 255, 0.06);
+     border-radius: 14px;
+     transition: border-color .2s, background .2s, transform .15s, box-shadow .2s;
+     box-shadow: var(--shadow);
+     overflow-wrap: anywhere;
+     /* keeps extra-long URLs from overflowing */
+ }
+
+ #shortend-urls li:hover {
+     border-color: color-mix(in oklab, var(--accent) 35%, var(--card-border));
+     background: rgba(255, 255, 255, 0.10);
+     transform: translateY(-1px);
+ }
+
+ /* Short URL (first link) → make it a pill/badge */
+ #shortend-urls li a:first-child {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     padding: 6px 10px;
+     border-radius: 999px;
+     background: rgba(124, 92, 255, .18);
+     color: color-mix(in oklab, var(--accent) 85%, white);
+     border: 1px solid color-mix(in oklab, var(--accent) 55%, var(--card-border));
+     font-weight: 700;
+     letter-spacing: .2px;
+     text-decoration: none;
+     white-space: nowrap;
+     flex: 0 0 auto;
+ }
+
+ /* Add a subtle chevron after the badge for visual separation */
+ #shortend-urls li a:first-child::after {
+     content: "→";
+     font-weight: 700;
+     margin-left: 6px;
+     opacity: .8;
+ }
+
+ /* Long URL (the plain text after the “ - ”) */
+ #shortend-urls li {
+     /* make the trailing text occupy the remaining width and ellipsize nicely */
+ }
+
+ #shortend-urls li {
+     /* we can’t select the plain text node directly, so we control wrapping globally */
+     line-height: 1.35;
+ }
+
+ /* Make the hyphen less shouty but keep it accessible */
+ #shortend-urls li {
+     /* tone down non-link text slightly */
+     color: var(--text);
+ }
+
+ #shortend-urls li a+* {
+     /* not applicable since the second item is a text node, but keeping link color distinct */
+ }
+
+ #shortend-urls li a:first-child {
+     /* keep pill color distinct; already set above */
+ }
+
+ /* When hovering the row, underline the destination text visually via a shadow trick */
+ #shortend-urls li:hover {
+     box-shadow: 0 10px 24px rgba(16, 24, 40, 0.20);
+ }
+
+ /* Keyboard focus on the first link */
+ #shortend-urls li a:first-child:focus-visible {
+     outline: none;
+     box-shadow:
+         0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent),
+         0 6px 20px rgba(124, 92, 255, .25);
+ }
+
+ /* Compact tweaks for small screens */
+ @media (max-width: 520px) {
+     #shortend-urls {
+         gap: 10px;
+     }
+
+     #shortend-urls li {
+         padding: 12px 12px;
+     }
+
+     #shortend-urls li a:first-child {
+         padding: 5px 9px;
+         font-size: 13px;
+     }
+ }
