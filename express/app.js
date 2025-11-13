@@ -11,6 +11,9 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
     res.send("<h1>Hello About Page!</h1>");
 });
+app.get("/test", (req, res) => {
+    res.send("<h1>Hello About Page!</h1>");
+});
 
 app.get("/contact", (req, res) => {
     res.send(`<form id="shorten-form" autocomplete="off" method="post">
