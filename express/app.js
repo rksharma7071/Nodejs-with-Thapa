@@ -15,6 +15,15 @@ app.get("/test", (req, res) => {
     res.send("<h1>Hello About Page!</h1>");
 });
 
+app.get("/ankit", (req, res)=> {
+
+  console.log("Hello Ankit");
+  res.send("Hello Ankit")
+})
+
+
+console.log("Hello");
+
 app.listen(PORT, () => {
-    console.log(`Server started → http://localhost:${PORT}/`);
+    console.log(`Server started → http://localhostankit:${PORT}/`);
 });
