@@ -1,47 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Header</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Responsive Header</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">MyLogo</div>
 
-<header class="header">
-    <div class="logo">MyLogo</div>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/url-shortener">Url Short</a>
+                <a href="#">About</a>
+                <a href="#" class="btn">Contact</a>
+            </nav>
 
-    <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">About</a>
-        <a href="#" class="btn">Contact</a>
-    </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
 
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</header>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="/url-shortener">Url Short</a>
+            <a href="#">About</a>
+            <a href="#" class="btn">Contact</a>
+        </div>
+        <div class="container">
+            <form class="login-box" action="/contact" method="post">
+                <h2>Login</h2>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#">Home</a>
-    <a href="#">Services</a>
-    <a href="#">About</a>
-    <a href="#" class="btn">Contact</a>
-</div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <!-- <input
+                        type="email"
+                        placeholder="Enter your email"
+                        name="email"
+                        required
+                    /> -->
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        name="user[email]"
+                        required
+                    />
+                </div>
 
-<script>
-    const hamburger = document.getElementById("hamburger");
-    const mobileMenu = document.getElementById("mobileMenu");
+                <div class="input-group">
+                    <label>Password</label>
+                    <!-- <input
+                        type="password"
+                        placeholder="Enter your password"
+                        name="password"
+                        required
+                    /> -->
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        name="user[password]"
+                        required
+                    />
+                </div>
 
-    hamburger.addEventListener("click", () => {
-        mobileMenu.classList.toggle("active");
-        hamburger.classList.toggle("active");
-    });
-</script>
+                <button type="submit" class="btn">Login</button>
 
-</body>
+                <p class="signup">
+                    Don't have an account? <a href="#">Sign Up</a>
+                </p>
+            </form>
+        </div>
+        <script>
+            const hamburger = document.getElementById("hamburger");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            hamburger.addEventListener("click", () => {
+                mobileMenu.classList.toggle("active");
+                hamburger.classList.toggle("active");
+            });
+        </script>
+    </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">MyLogo</div>
+
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/url-shortener">Url Short</a>
+                <a href="#">About</a>
+                <a href="#" class="btn">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="/url-shortener">Url Short</a>
+            <a href="#">About</a>
+            <a href="#" class="btn">Contact</a>
+        </div>
+        <div class="shortener-wrapper">
+            <form method="post" class="shortener-form" action="/url-shortener">
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="url" name="url" id="url" />
+                </div>
+                <div class="form-group">
+                    <label for="shortCode">Short URL</label>
+                    <input type="text" name="shortCode" id="shortCode" />
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <ul class="short-links-list">{{shortened_urls}}</ul>
+        </div>
+    </body>
+</html>
