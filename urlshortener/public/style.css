@@ -1,0 +1,495 @@
+/* ========== Global Reset & Base ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    color: #111827;
+}
+
+/* Utility container for centered layouts (login, etc.) */
+.container {
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 24px 20px 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+/* ========== Header ========== */
+.header {
+    width: 100%;
+    padding: 16px 32px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Desktop Nav */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #007bff;
+}
+
+/* CTA in header can also use .btn */
+.nav .btn {
+    padding-inline: 16px;
+}
+
+/* Hamburger Menu (Mobile Only) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #111827;
+    transition: 0.3s;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 16px 24px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.mobile-menu a {
+    padding: 10px 0;
+    text-decoration: none;
+    color: #374151;
+    font-size: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+    .nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========== Shared Form Elements ========== */
+
+.input-group,
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label,
+.form-group label {
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.input-group input,
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #f9fafb;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.input-group input:focus,
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    background: #ffffff;
+}
+
+/* ========== Buttons (Global) ========== */
+
+.btn,
+.form-actions button,
+.error-wrapper button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #007bff;
+    color: #ffffff !important;
+    /* box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3); */
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover,
+.form-actions button:hover,
+.error-wrapper button:hover {
+    background: #0056c7;
+    /* box-shadow: 0 8px 18px rgba(0, 86, 199, 0.35); */
+    /* transform: translateY(-1px); */
+}
+
+.btn:active,
+.form-actions button:active,
+.error-wrapper button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 86, 199, 0.3);
+}
+
+/* Buttons inside forms full width when needed */
+.login-box .btn,
+.shortener-wrapper .form-actions button {
+    width: 100%;
+}
+
+/* ========== Login Box ========== */
+
+.login-box {
+    width: 100%;
+    /* max-width: 360px; */
+    /* background: #ffffff; */
+    /* padding: 24px 20px 28px; */
+    /* border-radius: 12px; */
+    /* box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); */
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+.signup {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.signup a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* ========== 404 Page ========== */
+
+main {
+    min-height: calc(100vh - 64px); /* leaves room for header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+main .container {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-wrapper {
+    background: #ffffff;
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    text-align: center;
+    border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+.error-wrapper h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.error-wrapper p {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+/* Big 404 Badge */
+.error-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    background: #007bff;
+    box-shadow: 0 10px 24px rgba(0, 123, 255, 0.35);
+    margin-bottom: 20px;
+}
+
+.error-code span {
+    font-size: 2.4rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.error-support {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.error-support a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.error-support a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .error-wrapper {
+        padding: 24px 16px;
+    }
+
+    .error-wrapper h2 {
+        font-size: 1.5rem;
+    }
+
+    .error-code {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 16px;
+    }
+
+    .error-code span {
+        font-size: 2rem;
+    }
+}
+
+/* ========== URL Shortener Page ========== */
+
+.shortener-wrapper {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 24px 20px 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+.shortener-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+/* List of shortened URLs */
+.short-links-list {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid #e5e7eb;
+    max-height: 260px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.short-links-list li {
+    font-size: 0.9rem;
+    padding: 8px 4px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #4b5563;
+    word-break: break-all;
+}
+
+.short-links-list li:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.short-links-list li:hover {
+    background: #f3f4ff;
+}
+
+.short-links-list a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.short-links-list a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile tweaks for shortener */
+@media (max-width: 480px) {
+    .shortener-wrapper {
+        margin: 20px 12px;
+        padding: 18px 14px 22px;
+        border-radius: 12px;
+    }
+
+    .form-actions {
+        justify-content: stretch;
+    }
+}
+
+.table-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    /* overflow-x: auto; */
+    margin-top: 20px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    background: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+table thead {
+    background: #f9fafb;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #6b7280;
+    letter-spacing: 0.5px;
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:hover {
+    background: #f3f4ff;
+}
+
+table .action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #007bff;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+table .action-btn:hover {
+    background: #0056c7;
+}
+
+/* Responsive stacking for tables (optional) */
+@media (max-width: 480px) {
+    table th,
+    table td {
+        padding: 10px 8px;
+    }
+}

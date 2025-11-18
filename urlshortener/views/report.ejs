@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <%- include("header") %>
+        <div class="container">
+            <h1>Student Report Card</h1>
+            <!-- <p>Name: <%= student.name %></p>
+            <p>Grade: <%= student.grade %></p>
+            <p>Favorite Subject: <%= student.favoriteSubject %></p> -->
+            <div class="table-wrapper">
+                <table border="1">
+                    <% for(var i=0; i < student.length; i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= student[i].name %></td>
+                        <td><%= student[i].grade %></td>
+                        <td><%= student[i].favoriteSubject %></td>
+                    </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
