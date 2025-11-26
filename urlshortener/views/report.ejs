@@ -3,27 +3,42 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css" />
+        <title>Report</title>
+        <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
         <%- include("header") %>
+
         <div class="container">
-            <h1>Student Report Card</h1>
-            <!-- <p>Name: <%= student.name %></p>
-            <p>Grade: <%= student.grade %></p>
-            <p>Favorite Subject: <%= student.favoriteSubject %></p> -->
+            <h2 class="main-heading">Short Links Directory</h2>
+
             <div class="table-wrapper">
-                <table border="1">
-                    <% for(var i=0; i < student.length; i++) { %>
-                    <tr>
-                        <td><%= i+1 %></td>
-                        <td><%= student[i].name %></td>
-                        <td><%= student[i].grade %></td>
-                        <td><%= student[i].favoriteSubject %></td>
-                    </tr>
-                    <% } %>
-                </table>
+                <% if (!links || links.length === 0) { %>
+                    <p>No links found.</p>
+                <% } else { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Short URL</th>
+                                <th>Original URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% links.forEach((link, i) => { %>
+                                <tr>
+                                    <td><%= i + 1 %></td>
+                                    <td>
+                                        <a class="sortLink" href="/<%= link.shortCode %>" target="_blank" rel="noopener noreferrer">
+                                            <%= host %>/<%= link.shortCode %>
+                                        </a>
+                                    </td>
+                                    <td><%= link.url %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } %>
             </div>
         </div>
     </body>

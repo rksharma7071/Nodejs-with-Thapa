@@ -6,6 +6,7 @@
     font-family: "Poppins", sans-serif;
 }
 
+
 body {
     background: #f0f2f5;
     color: #111827;
@@ -14,10 +15,10 @@ body {
 /* Utility container for centered layouts (login, etc.) */
 .container {
     /* min-height: 100vh; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    max-width: fit-content;
     margin: 40px auto;
     background: #ffffff;
     padding: 24px 20px 28px;
@@ -62,7 +63,7 @@ body {
 }
 
 .nav a:hover {
-    color: #007bff;
+    color: #193f6e;
 }
 
 /* CTA in header can also use .btn */
@@ -89,9 +90,11 @@ body {
 .hamburger.active span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
+
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
@@ -173,7 +176,7 @@ body {
 
 .input-group input:focus,
 .form-group input:focus {
-    border-color: #007bff;
+    border-color: #193f6e;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
     background: #ffffff;
 }
@@ -193,7 +196,7 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    background: #007bff;
+    background: #193f6e;
     color: #ffffff !important;
     /* box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3); */
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
@@ -246,7 +249,7 @@ body {
 }
 
 .signup a {
-    color: #007bff;
+    color: #193f6e;
     text-decoration: none;
     font-weight: 500;
 }
@@ -258,7 +261,8 @@ body {
 /* ========== 404 Page ========== */
 
 main {
-    min-height: calc(100vh - 64px); /* leaves room for header */
+    min-height: calc(100vh - 64px);
+    /* leaves room for header */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,7 +306,7 @@ main .container {
     width: 120px;
     height: 120px;
     border-radius: 999px;
-    background: #007bff;
+    background: #193f6e;
     box-shadow: 0 10px 24px rgba(0, 123, 255, 0.35);
     margin-bottom: 20px;
 }
@@ -321,7 +325,7 @@ main .container {
 }
 
 .error-support a {
-    color: #007bff;
+    color: #193f6e;
     text-decoration: none;
     font-weight: 500;
 }
@@ -353,7 +357,7 @@ main .container {
 /* ========== URL Shortener Page ========== */
 
 .shortener-wrapper {
-    max-width: 600px;
+    max-width: fit-content;
     margin: 40px auto;
     background: #ffffff;
     padding: 24px 20px 28px;
@@ -402,13 +406,13 @@ main .container {
 }
 
 .short-links-list li:hover {
-    background: #f3f4ff;
+    background: #193f6e26;
 }
 
 .short-links-list a {
     font-weight: 600;
     text-decoration: none;
-    color: #007bff;
+    color: #193f6e;
 }
 
 .short-links-list a:hover {
@@ -434,7 +438,7 @@ main .container {
     margin: auto;
     /* overflow-x: auto; */
     margin-top: 20px;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     border: 1px solid #e5e7eb;
     box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
     background: #ffffff;
@@ -448,11 +452,11 @@ table {
 }
 
 table thead {
-    background: #f9fafb;
+    background: #193f6e;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
-    color: #6b7280;
+    color: #ffffff;
     letter-spacing: 0.5px;
 }
 
@@ -475,7 +479,7 @@ table .action-btn {
     padding: 6px 12px;
     border-radius: 6px;
     border: none;
-    background: #007bff;
+    background: #193f6e;
     color: white;
     font-size: 0.8rem;
     cursor: pointer;
@@ -488,8 +492,30 @@ table .action-btn:hover {
 
 /* Responsive stacking for tables (optional) */
 @media (max-width: 480px) {
+
     table th,
     table td {
         padding: 10px 8px;
     }
+}
+
+.sortLink {
+    color: #193f6e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.main-heading {
+    position: relative;
+    text-align: center;
+}
+
+.main-heading::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #193f6e;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
 }

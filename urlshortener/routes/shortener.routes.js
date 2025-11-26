@@ -8,13 +8,13 @@ import {
 
 const router = Router();
 
-export default function shortenerRoutes(baseDir) {
-    router.get("/", getshortener(baseDir));
-    router.post("/", postshortener(baseDir));
+export default function shortenerRoutes() {
+    router.get("/", getshortener());
+    router.post("/", postshortener());
 
     router.get("/report", getReport);
 
-    router.get("/:shortCode", getShortCode(baseDir));
+    router.get("/:shortCode", getShortCode());
 
     return router;
 }

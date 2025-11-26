@@ -3,12 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>NodeJS</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.png" type="image/png">
+
     </head>
     <body>
         <%- include("header") %>
         <div class="shortener-wrapper">
+            <h2 class="main-heading">Generate Your Short Link</h2>
             <form method="post" class="shortener-form" action="/">
                 <div class="form-group">
                     <label for="url">URL</label>
@@ -24,13 +28,11 @@
             </form>
 
             <ul class="short-links-list">
-                <% Object.entries(links).forEach(([shortCode, url]) => { %>
-                <li>
-                    <a href="/<%= shortCode %>" target="_blank"
-                        ><%= host %>/<%= shortCode %></a
-                    >
-                    &rarr; <%= url %>
-                </li>
+                <% links.map((link, i) => { %>
+                    <li>
+                        <a href="<%= link.shortCode %>" target="_blank"><%= host %>/<%= link.shortCode %></a>
+                        &rarr; <%= link.url %>
+                    </li>
                 <% }) %>
             </ul>
         </div>

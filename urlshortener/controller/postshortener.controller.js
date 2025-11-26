@@ -1,7 +1,11 @@
 import crypto from "crypto";
-import { loadLinks, saveLinks } from "../models/shortener.model.js";
+import {
+    getLinkByShortCode,
+    loadLinks,
+    saveLinks,
+} from "../models/shortener.model.js";
 
-export const postshortener = (baseDir) => {
+export const postshortener = () => {
     return async (req, res) => {
         try {
             const { url, shortCode } = req.body;
@@ -10,18 +14,24 @@ export const postshortener = (baseDir) => {
                 return res.status(400).send("URL is required!");
             }
 
-            const links = await loadLinks(baseDir);
             const finalShortCode =
                 shortCode || crypto.randomBytes(4).toString("hex");
 
-            if (links[finalShortCode]) {
+            // check if shortCode exists in DB
+            const existing = await getLinkByShortCode(finalShortCode);
+            if (existing) {
                 return res
                     .status(409)
                     .send("Short code already exists. Please choose another.");
             }
 
-            links[finalShortCode] = url;
-            await saveLinks(baseDir, links);
+            // save to DB
+            await saveLinks({
+                url,
+                shortCode: finalShortCode,
+                createdAt: new Date(),
+            });
+
             return res.redirect("/");
         } catch (error) {
             console.error("URL Short Error:", error);
@@ -30,12 +40,11 @@ export const postshortener = (baseDir) => {
     };
 };
 
-export const getshortener = (baseDir) => {
+export const getshortener = () => {
     return async (req, res) => {
         try {
-            const links = await loadLinks(baseDir);
-
-            res.render("index", { links, host: req.host });
+            const links = await loadLinks();
+            res.render("index", { links, host: req.get("host") });
         } catch (error) {
             console.error("Error serving page:", error);
             return res.status(500).send("Internal Server Error");
@@ -43,47 +52,19 @@ export const getshortener = (baseDir) => {
     };
 };
 
-export const getReport = (req, res) => {
-    const student = [
-        {
-            name: "Aarav",
-            grade: "10th",
-            favoriteSubject: "Mathematics",
-        },
-        {
-            name: "Inshita",
-            grade: "9th",
-            favoriteSubject: "Science",
-        },
-        {
-            name: "Rohan",
-            grade: "8th",
-            favoriteSubject: "History",
-        },
-        {
-            name: "Meera",
-            grade: "10th",
-            favoriteSubject: "English",
-        },
-        {
-            name: "Kabir",
-            grade: "11th",
-            favoriteSubject: "Physics",
-        },
-    ];
-    res.render("report", { student });
+export const getReport = async (req, res) => {
+    const links = await loadLinks();
+    res.render("report", { links, host: req.get("host") });
 };
 
-export const getShortCode = (baseDir) => async (req, res) => {
+export const getShortCode = () => async (req, res) => {
     try {
         const { shortCode } = req.params;
+        const link = await getLinkByShortCode(shortCode);
 
-        const links = await loadLinks(baseDir);
+        if (!link) return res.status(404).send("Short URL not found.");
 
-        if (!links[shortCode])
-            return res.status(404).send("Short URL not found.");
-
-        return res.redirect(links[shortCode]);
+        return res.redirect(link.url);
     } catch (error) {
         console.error(error);
         return res.status(500).send("Internal Server Error");
