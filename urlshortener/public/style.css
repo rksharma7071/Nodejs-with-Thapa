@@ -22,7 +22,7 @@ body {
     margin: 40px auto;
     background: #ffffff;
     padding: 24px 20px 28px;
-    border-radius: 16px;
+    border-radius: 7px;
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     border: 1px solid rgba(209, 213, 219, 0.8);
 }
@@ -167,7 +167,7 @@ body {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #d1d5db;
-    border-radius: 8px;
+    border-radius: 7px;
     font-size: 0.95rem;
     outline: none;
     background: #f9fafb;
@@ -190,7 +190,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    border-radius: 999px;
+    border-radius: 7px;
     border: none;
     outline: none;
     font-size: 0.95rem;
@@ -230,7 +230,7 @@ body {
     /* max-width: 360px; */
     /* background: #ffffff; */
     /* padding: 24px 20px 28px; */
-    /* border-radius: 12px; */
+    /* border-radius: 7px; */
     /* box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); */
 }
 
@@ -280,7 +280,7 @@ main .container {
 .error-wrapper {
     background: #ffffff;
     padding: 32px 24px;
-    border-radius: 16px;
+    border-radius: 7px;
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     text-align: center;
     border: 1px solid rgba(209, 213, 219, 0.8);
@@ -305,7 +305,7 @@ main .container {
     justify-content: center;
     width: 120px;
     height: 120px;
-    border-radius: 999px;
+    border-radius: 7px;
     background: #193f6e;
     box-shadow: 0 10px 24px rgba(0, 123, 255, 0.35);
     margin-bottom: 20px;
@@ -361,7 +361,7 @@ main .container {
     margin: 40px auto;
     background: #ffffff;
     padding: 24px 20px 28px;
-    border-radius: 16px;
+    border-radius: 7px;
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     border: 1px solid rgba(209, 213, 219, 0.8);
 }
@@ -393,7 +393,7 @@ main .container {
 .short-links-list li {
     font-size: 0.9rem;
     padding: 8px 4px;
-    border-radius: 8px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -424,7 +424,7 @@ main .container {
     .shortener-wrapper {
         margin: 20px 12px;
         padding: 18px 14px 22px;
-        border-radius: 12px;
+        border-radius: 7px;
     }
 
     .form-actions {
@@ -438,7 +438,7 @@ main .container {
     margin: auto;
     /* overflow-x: auto; */
     margin-top: 20px;
-    /* border-radius: 12px; */
+    /* border-radius: 7px; */
     border: 1px solid #e5e7eb;
     box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
     background: #ffffff;
@@ -477,7 +477,7 @@ table tbody tr:hover {
 
 table .action-btn {
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 7px;
     border: none;
     background: #193f6e;
     color: white;
