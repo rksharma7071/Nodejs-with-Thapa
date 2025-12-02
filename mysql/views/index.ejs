@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NodeJS</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.png" type="image/png">
+
+    </head>
+    <body>
+        <%- include("header") %>
+        <div class="shortener-wrapper">
+            <h2 class="main-heading">Generate Your Short Link</h2>
+            <form method="post" class="shortener-form" action="/">
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="url" name="url" id="url" />
+                </div>
+                <div class="form-group">
+                    <label for="shortCode">Short URL</label>
+                    <input type="text" name="shortCode" id="shortCode" />
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <ul class="short-links-list">
+                <% links.map((link, i) => { %>
+                    <li>
+                        <a href="<%= link.short_code %>" target="_blank"><%= host %>/<%= link.short_code %></a>
+                        &rarr; <%= link.url %>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </body>
+</html>

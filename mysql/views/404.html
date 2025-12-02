@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">MyLogo</div>
+
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/url-shortener">Url Short</a>
+                <a href="#">About</a>
+                <a href="#" class="btn">Contact</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/">Home</a>
+            <a href="/url-shortener">Url Short</a>
+            <a href="#">About</a>
+            <a href="#" class="btn">Contact</a>
+        </div>
+        <main>
+            <div class="container">
+                <div class="error-wrapper">
+                    <h2>404 – Page Not Found</h2>
+                    <p>
+                        Oops! The page you’re looking for doesn’t exist or may
+                        have been moved.
+                    </p>
+
+                    <div class="error-code">
+                        <span>404</span>
+                    </div>
+
+                    <button onclick="window.location.href='/'">
+                        Go Back Home
+                    </button>
+
+                    <div class="error-support">
+                        <span
+                            >Need help?
+                            <a href="/contact">Contact support</a></span
+                        >
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
